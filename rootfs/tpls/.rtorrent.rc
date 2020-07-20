@@ -29,7 +29,7 @@ protocol.pex.set = yes
 pieces.hash.on_completion.set = yes
 
 # Set whether the client should try to connect to UDP trackers
-#trackers.use_udp.set = yes
+trackers.use_udp.set = yes
 
 # Set the max amount of memory address space used to mapping file chunks. This refers to memory mapping, not
 # physical memory allocation. Default: 1GB (max_memory_usage)
