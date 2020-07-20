@@ -108,7 +108,7 @@ RUN apk --update --no-cache add -t build-dependencies \
   && apk del build-dependencies \
   && rm -rf /tmp/* /var/cache/apk/*
 
-ENV RUTORRENT_VERSION="3.10" \
+ENV RUTORRENT_VERSION="3.10-beta" \
   RUTORRENT_REVISION="3446d5a" \
   GEOIP_EXT_VERSION="1.1.1"
 
