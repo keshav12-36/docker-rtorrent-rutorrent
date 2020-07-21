@@ -195,12 +195,12 @@ RUN apk --update --no-cache add \
   && mv ruTorrent-${VER_RUTORRENT} rutorrent \
   && cd rutorrent \
   && pip2 install cfscrape cloudscraper \
-  && git clone https://github.com/xombiemp/ruTorrentMobile /var/www/rutorrent/plugins/mobile \
   && git clone https://github.com/Phlooo/ruTorrent-MaterialDesign /var/www/rutorrent/plugins/theme/themes/materialdesign \
   && git clone https://github.com/djerfy/ruTorrent-plugins /var/plu \
-  && sed -i "s/'mkdir'.*$/'mkdir',/" /var/plu/filemanager/flm.class.php \
-  && sed -i 's#.*/usr/bin/rar.*##' /var/plu/filemanager/conf.php \
   && sed -i 's/version: "[[:digit:]].[[:digit:]]\{1,2\}",/version: "'${VER_RUTORRENT}'",/g' /var/www/rutorrent/js/webui.js \
+  && rm -Rf /var/plu/checksfv \
+  && rm -Rf /var/plu/fileupload \
+  && rm -Rf /var/plu/filemanager \
   && mv /var/plu/* /var/www/rutorrent/plugins/ \
   && rm -Rf /var/plu \
   && git clone https://github.com/Gyran/rutorrent-instantsearch /var/www/rutorrent/plugins/instantsearch \
