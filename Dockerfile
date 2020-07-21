@@ -201,6 +201,8 @@ RUN apk --update --no-cache add \
   && rm -Rf /var/plu/checksfv \
   && rm -Rf /var/plu/fileupload \
   && rm -Rf /var/plu/filemanager \
+  && rm -Rf /var/plu/fileshare \
+  && rm -Rf /var/plu/mediastream \
   && mv /var/plu/* /var/www/rutorrent/plugins/ \
   && rm -Rf /var/plu \
   && git clone https://github.com/Gyran/rutorrent-instantsearch /var/www/rutorrent/plugins/instantsearch \
