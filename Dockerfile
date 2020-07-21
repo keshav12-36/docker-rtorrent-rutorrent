@@ -192,7 +192,7 @@ RUN apk --update --no-cache add \
   && wget https://github.com/Novik/ruTorrent/archive/v${VER_RUTORRENT}.tar.gz -O rutorrent-${VER_RUTORRENT}.tar.gz \
   && tar xvzf rutorrent-${VER_RUTORRENT}.tar.gz \
   && rm -f rutorrent-${VER_RUTORRENT}.tar.gz \
-  && mv rutorrent-${VER_RUTORRENT} rutorrent \
+  && mv ruTorrent-${VER_RUTORRENT} rutorrent \
   && cd rutorrent \
   && pip2 install cfscrape cloudscraper \
   && git clone https://github.com/xombiemp/ruTorrentMobile /var/www/rutorrent/plugins/mobile \
