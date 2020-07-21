@@ -200,9 +200,11 @@ RUN apk --update --no-cache add \
   && git clone https://github.com/djerfy/ruTorrent-plugins /var/plu \
   && sed -i "s/'mkdir'.*$/'mkdir',/" /var/plu/filemanager/flm.class.php \
   && sed -i 's#.*/usr/bin/rar.*##' /var/plu/filemanager/conf.php \
-  && sed -i 's/version: "[[:digit:]].[[:digit:]]\{1,2\}",/version: "'${VER_RUTORRENT}'",/g' /var/www/rutorrent/js/webui.js 
+  && sed -i 's/version: "[[:digit:]].[[:digit:]]\{1,2\}",/version: "'${VER_RUTORRENT}'",/g' /var/www/rutorrent/js/webui.js \
   && mv /var/plu/* /var/www/rutorrent/plugins/ \
   && rm -Rf /var/plu \
+  && git clone https://github.com/Gyran/rutorrent-instantsearch /var/www/rutorrent/plugins/instantsearch \
+  && git clone https://github.com/Gyran/rutorrent-ratiocolor /var/www/rutorrent/plugins/ratiocolor \
   && git clone https://github.com/Micdu70/geoip2-rutorrent /var/www/rutorrent/plugins/geoip2 \
   # geolite2
   && mkdir /var/mmdb \
