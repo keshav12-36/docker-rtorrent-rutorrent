@@ -3,6 +3,7 @@ FROM nginx:mainline-alpine
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
+ARG VER_RUTORRENT="3.10-beta"
 
 LABEL maintainer="CrazyMax" \
   org.opencontainers.image.created=$BUILD_DATE \
@@ -108,9 +109,7 @@ RUN apk --update --no-cache add -t build-dependencies \
   && apk del build-dependencies \
   && rm -rf /tmp/* /var/cache/apk/*
 
-ENV RUTORRENT_VERSION="3.10-beta" \
-  RUTORRENT_REVISION="3446d5a" \
-  GEOIP_EXT_VERSION="1.1.1"
+ENV GEOIP_EXT_VERSION="1.1.1"
 
 RUN apk --update --no-cache add \
     apache2-utils \
@@ -190,9 +189,11 @@ RUN apk --update --no-cache add \
   # ruTorrent
   && mkdir -p /var/www \
   && cd /var/www \
-  && git clone https://github.com/Novik/ruTorrent.git rutorrent \
+  && wget https://github.com/Novik/ruTorrent/archive/v${VER_RUTORRENT}.tar.gz -O rutorrent-${VER_RUTORRENT}.tar.gz \
+  && tar xvzf rutorrent-${VER_RUTORRENT}.tar.gz \
+  && rm -f rutorrent-${VER_RUTORRENT}.tar.gz
+  && mv rutorrent-${VER_RUTORRENT} rutorrent \
   && cd rutorrent \
-  && git checkout ${RUTORRENT_REVISION} \
   && pip2 install cfscrape cloudscraper \
   && git clone https://github.com/Micdu70/geoip2-rutorrent /var/www/rutorrent/plugins/geoip2 \
   # geolite2
