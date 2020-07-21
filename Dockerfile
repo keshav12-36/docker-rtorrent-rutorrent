@@ -191,10 +191,15 @@ RUN apk --update --no-cache add \
   && cd /var/www \
   && wget https://github.com/Novik/ruTorrent/archive/v${VER_RUTORRENT}.tar.gz -O rutorrent-${VER_RUTORRENT}.tar.gz \
   && tar xvzf rutorrent-${VER_RUTORRENT}.tar.gz \
-  && rm -f rutorrent-${VER_RUTORRENT}.tar.gz
+  && rm -f rutorrent-${VER_RUTORRENT}.tar.gz \
   && mv rutorrent-${VER_RUTORRENT} rutorrent \
   && cd rutorrent \
   && pip2 install cfscrape cloudscraper \
+  && git clone https://github.com/xombiemp/ruTorrentMobile /var/www/rutorrent/plugins/mobile \
+  && git clone https://github.com/Phlooo/ruTorrent-MaterialDesign /var/www/rutorrent/plugins/theme/themes/materialdesign \
+  && git clone https://github.com/djerfy/ruTorrent-plugins /var/plu \
+  && mv /var/plu/* /var/www/rutorrent/plugins/ \
+  && rm -Rf /var/plu \
   && git clone https://github.com/Micdu70/geoip2-rutorrent /var/www/rutorrent/plugins/geoip2 \
   # geolite2
   && mkdir /var/mmdb \
